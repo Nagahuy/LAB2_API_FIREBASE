@@ -1,9 +1,5 @@
 # LAB 2: API & FIREBASE STUDIO
 
-**Môn học:** Tư duy tính toán
-
-**GVHD:** Lê Đức Khoan
-
 **Sinh viên thực hiện:** 24120064 - Trương Đình Nhật Huy
 
 ## 1. Mô Tả Dự Án
@@ -32,7 +28,7 @@ Feature chính của ứng dụng là chatbot học tập chạy bằng model lo
 **Clone repository**
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/Nagahuy/LAB2_API_FIREBASE.git
 cd LAB2_API_FIREBASE
 ```
 
@@ -89,8 +85,6 @@ firebase-service-account.json
 
 `llama-server` không nằm trong `requirements.txt`, cần cài hoặc build riêng từ `llama.cpp`.
 
-Model khuyến nghị cho máy khoảng 8GB RAM:
-
 ```bash
 llama-server \
   --hf-repo Qwen/Qwen2.5-3B-Instruct-GGUF \
@@ -101,25 +95,6 @@ llama-server \
   -a study-bot
 ```
 
-Nếu máy yếu hoặc bị thiếu RAM, dùng model nhỏ hơn:
-
-```bash
-llama-server \
-  --hf-repo enacimie/Qwen3-0.6B-Q4_K_M-GGUF \
-  --hf-file qwen3-0.6b-q4_k_m.gguf \
-  -c 2048 \
-  --host 127.0.0.1 \
-  --port 8080 \
-  -a study-bot
-```
-
-Kiểm tra model server:
-
-```bash
-curl http://127.0.0.1:8080/health
-curl http://127.0.0.1:8080/v1/models
-```
-
 ## 4. Hướng Dẫn Chạy Backend
 
 Backend được xây dựng bằng FastAPI.
@@ -127,18 +102,6 @@ Backend được xây dựng bằng FastAPI.
 ```bash
 conda activate labFirebase
 uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000
-```
-
-Backend chạy tại:
-
-```text
-http://127.0.0.1:8000
-```
-
-Swagger UI:
-
-```text
-http://127.0.0.1:8000/docs
 ```
 
 ## 5. Hướng Dẫn Chạy Frontend
@@ -175,14 +138,3 @@ Video demo giới thiệu luồng đăng ký, đăng nhập, xác thực Firebas
 - `POST /chat/sessions`: Tạo một đoạn chat mới, yêu cầu Bearer token.
 - `GET /chat/messages`: Lấy tin nhắn trong một đoạn chat theo `session_id`, yêu cầu Bearer token.
 - `POST /chat`: Gửi câu hỏi tới chatbot, gọi llama.cpp, lưu user message và assistant reply vào Firestore.
-
-## 8. Ghi Chú Khi Demo
-
-- Không hiển thị `.env`, Firebase service account JSON hoặc token trong video.
-- Mở sẵn Firebase Console ở `Authentication -> Users` để chứng minh user được tạo.
-- Mở sẵn Firestore ở `chats/{uid}/sessions/{session_id}/messages` để chứng minh lịch sử chat được lưu.
-- Nên chạy thử `api_smoke_test.sh` trước khi quay:
-
-```bash
-bash api_smoke_test.sh
-```
