@@ -121,9 +121,7 @@ http://127.0.0.1:8501
 
 ## 6. Đường Dẫn Đến Video Demo
 
-Video demo giới thiệu luồng đăng ký, đăng nhập, xác thực Firebase, gửi câu hỏi cho chatbot, xem lại lịch sử chat và kiểm tra dữ liệu được lưu trong Firestore.
-
-**Link Video:** `<link demo>`
+**Link Video:** https://youtu.be/AJsNbxMZJZs
 
 ## 7. Danh Sách API Endpoints
 
