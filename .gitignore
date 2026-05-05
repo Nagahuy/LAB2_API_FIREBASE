@@ -1,0 +1,43 @@
+.env
+firebase-service-account*.json
+*service-account*.json
+
+# Local model/build output
+*.gguf
+models/
+llama.cpp/
+build/
+dist/
+
+# Python/cache output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
+.streamlit/
+.venv/
+venv/
+env/
+
+# Local test/demo files
+usage.md
+api_smoke_test.sh
+DEMO_SCRIPT.md
+playwright-report/
+test-results/
+screenshots/
+recordings/
+demo-videos/
+*.log
+*.mp4
+*.webm
+
+# Editor/OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

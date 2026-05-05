@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Chatbot</title>
+  <link rel="icon" href="data:,">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+    media="print"
+    onload="this.media='all'"
+  >
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  </noscript>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">S</div>
+        <div>
+          <p class="brand-title">Study Chatbot</p>
+          <p class="brand-subtitle">Firebase Lab</p>
+        </div>
+      </div>
+
+      <div class="sidebar-actions signed-in-only hidden">
+        <button id="new-chat-btn" class="ghost-button" type="button">New chat</button>
+        <button id="reload-history-btn" class="ghost-button" type="button">Reload chats</button>
+      </div>
+
+      <div class="session-panel signed-in-only hidden">
+        <p class="section-label">Chats</p>
+        <div id="session-list" class="session-list"></div>
+      </div>
+
+      <div class="sidebar-spacer"></div>
+
+      <div id="account-panel" class="account-panel">
+        <p class="section-label">Account</p>
+        <p id="account-status" class="account-status">Not signed in</p>
+        <p id="account-email" class="account-email hidden"></p>
+        <button id="logout-btn" class="outline-button hidden" type="button">Logout</button>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <section id="auth-view" class="auth-view">
+        <div class="auth-card">
+          <div class="auth-heading">
+            <p class="eyebrow">Study Bot</p>
+            <h1>Đăng nhập để bắt đầu học</h1>
+            <p>Lưu lịch sử hội thoại bằng Firebase và hỏi bài qua model local.</p>
+          </div>
+
+          <div class="tab-row">
+            <button id="login-tab" class="tab-button active" type="button">Login</button>
+            <button id="signup-tab" class="tab-button" type="button">Signup</button>
+          </div>
+
+          <form id="login-form" class="auth-form">
+            <p id="login-message" class="form-message hidden"></p>
+            <label>
+              Email
+              <input id="login-email" type="email" autocomplete="email" required>
+            </label>
+            <label>
+              Password
+              <input id="login-password" type="password" autocomplete="current-password" required>
+            </label>
+            <button class="primary-button" type="submit">Login</button>
+          </form>
+
+          <form id="signup-form" class="auth-form hidden">
+            <p id="signup-message" class="form-message hidden"></p>
+            <label>
+              Email
+              <input id="signup-email" type="email" autocomplete="email" required>
+            </label>
+            <label>
+              Password
+              <input id="signup-password" type="password" autocomplete="new-password" minlength="6" required>
+            </label>
+            <button class="primary-button" type="submit">Create account</button>
+          </form>
+
+          <div class="divider"><span>or</span></div>
+          <button id="google-login-btn" class="google-button" type="button">Continue with Google</button>
+        </div>
+      </section>
+
+      <section id="chat-view" class="chat-view hidden">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow">Local AI Tutor</p>
+            <h1>Study Chatbot</h1>
+            <p>Hỏi bài tập, tóm tắt kiến thức, hoặc nhờ giải thích từng bước.</p>
+          </div>
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span id="message-count">0 messages</span>
+          </div>
+        </header>
+
+        <div id="empty-state" class="empty-state">
+          <h2>Bạn muốn học gì hôm nay?</h2>
+          <p>Chọn một gợi ý hoặc nhập câu hỏi của bạn ở ô bên dưới.</p>
+          <div class="prompt-grid">
+            <button class="prompt-chip" type="button">Giải thích đệ quy bằng ví dụ đơn giản</button>
+            <button class="prompt-chip" type="button">Tóm tắt kiến thức Firebase Auth</button>
+            <button class="prompt-chip" type="button">Gợi ý cách học FastAPI trong 30 phút</button>
+          </div>
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <form id="chat-form" class="composer">
+          <textarea id="chat-input" rows="1" placeholder="Nhập câu hỏi học tập..." required></textarea>
+          <button id="send-btn" class="send-button" type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="./app.js?v=20260505-2" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" defer></script>
+</body>
+</html>
